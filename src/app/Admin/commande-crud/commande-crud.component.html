@@ -1,0 +1,30 @@
+<section>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Nom & Prenom </th>
+            <th>Nom du Parfum</th>
+            <th>Marque</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+        @if (data()){
+        @for (item of data(); track $index) {
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.nomPrenom}}</td>
+                <td>{{item.nomParfum}}</td>
+                <td>{{item.marque}}</td>
+                <td>{{item.dateCmd}}</td>
+                <td>
+                    <button>Confirme</button>
+                    <button>Modifier</button>
+                    <button>Supprimer</button>
+                </td>
+            </tr>
+        }
+    }@else {
+        <p>il n'ya pas Aucune Commande !!</p>
+    }
+    </table>
+</section>

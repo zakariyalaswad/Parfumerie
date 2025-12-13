@@ -1,0 +1,50 @@
+type User @table {
+  displayName: String!
+  email: String!
+  createdAt: Timestamp!
+  address: String
+  phoneNumber: String
+}
+
+type Brand @table {
+  name: String!
+  createdAt: Timestamp!
+  description: String
+  originCountry: String
+}
+
+type Perfume @table {
+  name: String!
+  price: Float!
+  sizeML: Int!
+  createdAt: Timestamp!
+  brand: Brand
+  description: String
+  scentFamily: String
+  gender: String
+  imageUrl: String
+}
+
+type Review @table {
+  rating: Int!
+  createdAt: Timestamp!
+  user: User
+  perfume: Perfume
+  comment: String
+}
+
+type Order @table {
+  orderDate: Date!
+  totalAmount: Float!
+  status: String!
+  createdAt: Timestamp!
+  user: User
+  shippingAddress: String
+}
+
+type OrderItem @table(key: ["order", "perfume"]) {
+  quantity: Int!
+  pricePerUnit: Float!
+  order: Order!
+  perfume: Perfume!
+}

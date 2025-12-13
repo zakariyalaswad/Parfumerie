@@ -1,0 +1,21 @@
+<form class="flex flex-col w-1/2 border">
+    <h1>Registre</h1>
+    <label>Nom</label>
+    <input type="text" 
+    [(ngModel)]="data.nom" 
+    name="nom">
+    <label>Prenom</label>
+    <input type="text" [(ngModel)]="data.prenom" name="prenom">
+    <label>Adresse</label>
+    <input type="text" [(ngModel)]="data.adresse" name="adresse">
+    <label>Telephone</label>
+    <input type="tel" [(ngModel)]="data.tel" name="telephone">
+    <label>Email</label>
+    <input type="email" [(ngModel)]="data.email" name="email">
+    <label>Password</label>
+    <input type="text" [(ngModel)]="data.password" name="password">
+    <label>Confirm Password</label>
+    <input type="text" [(ngModel)]="data.passwordConfirm" name="password">
+    <br>
+    <button type="submit" (click)="register(data)" class="border cursor-pointer">Submit</button>
+</form>
