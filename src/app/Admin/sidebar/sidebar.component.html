@@ -1,0 +1,30 @@
+<aside class="fixed top-0 left-0 h-screen w-64 bg-gradient-to-b from-purple-700 to-pink-600 text-white
+         flex flex-col p-6 shadow-xl
+         -translate-x-full md:translate-x-0
+         transition-transform duration-300 ease-in-out">
+    <!-- Title -->
+    <h1 class="text-2xl font-extrabold mb-10 tracking-wide">
+        🌸 Parfum Admin
+    </h1>
+
+    <!-- Links -->
+    <nav class="flex flex-col gap-4">
+        <a routerLink="/Admin" routerLinkActive="bg-white text-purple-700" class="px-4 py-3 rounded-lg font-semibold
+             hover:bg-white hover:text-purple-700
+             transition-all duration-200">
+            📊 Dashboard
+        </a>
+
+        <a routerLink="/Admin/commande" routerLinkActive="bg-white text-purple-700" class="px-4 py-3 rounded-lg font-semibold
+             hover:bg-white hover:text-purple-700
+             transition-all duration-200">
+            🛒 Commande
+        </a>
+
+        <a routerLink="/Admin/AjoutParfum" routerLinkActive="bg-white text-purple-700" class="px-4 py-3 rounded-lg font-semibold
+             hover:bg-white hover:text-purple-700
+             transition-all duration-200">
+            ➕ Add Parfum
+        </a>
+    </nav>
+</aside>

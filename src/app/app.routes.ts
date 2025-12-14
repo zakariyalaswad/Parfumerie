@@ -2,24 +2,41 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
-
-        path: 'Parfumerie',
+        path: '',
         loadComponent: () => import('./Client/Features/home/home.component').then(m => m.HomeComponent)
     },
     {
-        path:'Dashbord',
-        loadComponent:()=>import('./Admin/dashbord/dashbord.component').then(m=>m.DashbordComponent)
+        path: 'login',
+        loadComponent: () => import('./Auth/connexion/connexion.component').then(m => m.ConnexionComponent)
     },
     {
-        path:'AjoutParfum',
-        loadComponent:()=>import('./Admin/parfum-crud/ajout-parfum/ajout-parfum.component').then(m=>m.AjoutParfumComponent)
+        path: 'signup',
+        loadComponent: () => import('./Auth/inscription/inscription.component').then(m => m.InscriptionComponent)
     },
     {
-        path:'login',
-        loadComponent:()=>import('./Auth/connexion/connexion.component').then(m=>m.ConnexionComponent)
-    },
-    {
-        path:'signup',
-        loadComponent:()=>import('./Auth/inscription/inscription.component').then(m=>m.InscriptionComponent)
+        path: 'Admin',
+        loadComponent: () =>
+            import('./Admin/home-admin/home-admin.component')
+                .then(m => m.HomeAdminComponent),
+        children: [
+            {
+                path: '',
+                loadComponent: () =>
+                    import('./Admin/dashbord/dashbord.component')
+                        .then(m => m.DashbordComponent),
+            },
+            {
+                path: 'AjoutParfum',
+                loadComponent: () =>
+                    import('./Admin/parfum-crud/ajout-parfum/ajout-parfum.component')
+                        .then(m => m.AjoutParfumComponent),
+            },
+            {
+                path: 'commande',
+                loadComponent: () =>
+                    import('./Admin/commande-crud/commande-crud.component')
+                        .then(m => m.CommandeCrudComponent),
+            }
+        ],
     }
 ];

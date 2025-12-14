@@ -35,7 +35,7 @@ export class DashbordComponent implements OnInit {
   }
 
   modifier(id: string) {
-    this.route.navigate(['/AjoutParfum'],{
+    this.route.navigate(['/Admin/AjoutParfum'],{
       state:{id}
     })
   }

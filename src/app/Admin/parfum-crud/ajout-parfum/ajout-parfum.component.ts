@@ -54,6 +54,7 @@ export class AjoutParfumComponent implements OnInit {
       await this.parfum.ajout(this.data());
       console.log("ajouter avec succe");
       this.reset();
+      this.router.navigate(['/Admin']);
     }
     catch (error) {
       console.log(error);
@@ -66,6 +67,7 @@ export class AjoutParfumComponent implements OnInit {
       console.log('modifier avec succée');
       this.reset();
       this.idDoc=null;
+      this.router.navigate(['/Admin']);
     }catch(error){
       console.log(error)
     }
