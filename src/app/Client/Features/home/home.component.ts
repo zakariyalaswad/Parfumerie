@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
   searchTerm: string = '';
   filteredParfumData: any[] = [];
 
-  constructor(private parfum: ParfumCrudService, private cmd: CmdCrudService,protected theme:ThemeService) {
+
+  constructor(private parfum: ParfumCrudService, private cmd: CmdCrudService, protected theme: ThemeService) {
 
   }
   ngOnInit() {
@@ -34,7 +35,8 @@ export class HomeComponent implements OnInit {
     prix: 0,
     nomPrenom: "--",
     nomParfum: "--",
-    marque: ""
+    marque: "",
+    confirmer: false
   };
   addCommande(item: any) {
     try {
@@ -62,19 +64,51 @@ export class HomeComponent implements OnInit {
 
 
   }
+
+  //filter
+
+
   filterParfum() {
+    this.currentPage.set(1);
+
+    if (!this.searchTerm.trim()) {
+      this.data.update(() => this.parfum.parfums());
+      return;
+    }
+
     const term = this.searchTerm.toLowerCase();
-    this.filteredParfumData = this.data().filter((parfums: {
-      nom:
-      string; marque: string;
-    }) => {
-      return (
-        parfums.nom.toLowerCase().includes(term) ||
-        parfums.marque.toLowerCase().includes(term)
-      );
-    });
-    this.data.update(x => this.filteredParfumData);
+
+    const filtered = this.parfum.parfums().filter((p: any) =>
+      p.nom.toLowerCase().includes(term) ||
+      p.marque.toLowerCase().includes(term)
+    );
+
+    this.data.update(() => filtered);
   }
+
+
+  //pagination
+
+  currentPage = signal(1);
+  itemsPerPage = 6;
+
+  paginatedData = () => {
+    const start = (this.currentPage() - 1) * this.itemsPerPage;
+    return this.data().slice(start, start + this.itemsPerPage);
+  };
+
+
+  totalPages = () => {
+    return Math.ceil(this.data().length / this.itemsPerPage);
+  };
+
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages()) {
+      this.currentPage.set(page);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
 
 
 

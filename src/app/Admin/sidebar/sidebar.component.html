@@ -13,8 +13,8 @@
             Admin
         </h1>
         <button (click)="theme.toggleTheme()"
-            class="px-3 py-1 rounded-full border border-[#C9A24D] hover:bg-[#C9A24D]/20 transition">
-            {{ theme.isDark() ? '🌙' : '☀️' }}
+            class="px-2 py-1 w-10 h-10 rounded-full border border-[#C9A24D] hover:bg-[#C9A24D]/20 transition">
+            {{ theme.isDark() ? '☀️' : '🌙' }}
         </button>
     </div>
 
@@ -22,31 +22,34 @@
     <nav class="flex flex-col gap-3">
         <a routerLink="/admin" routerLinkActive="bg-[#C9A24D]/20 text-gray-900 dark:text-[#F9F7F2]" class="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold
                   hover:bg-[#C9A24D]/30 hover:text-black dark:hover:text-[#0B0B0B]
-                  transition-all duration-300">
-            📊 Dashboard
+                  transition-all duration-300" [routerLinkActiveOptions]="{ exact: true }">
+            Dashboard
         </a>
 
         <a routerLink="/admin/commande" routerLinkActive="bg-[#C9A24D]/20 text-gray-900 dark:text-[#F9F7F2]" class="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold
                   hover:bg-[#C9A24D]/30 hover:text-black dark:hover:text-[#0B0B0B]
                   transition-all duration-300">
-            🛒 Commande
+            Commande
         </a>
 
         <a routerLink="/admin/ajoutParfum" routerLinkActive="bg-[#C9A24D]/20 text-gray-900 dark:text-[#F9F7F2]" class="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold
                   hover:bg-[#C9A24D]/30 hover:text-black dark:hover:text-[#0B0B0B]
                   transition-all duration-300">
-            ➕ Add Parfum
+            Ajout Parfum
         </a>
 
-        <a routerLink="" class="mt-4 flex items-center gap-3 px-4 py-3 rounded-xl font-semibold
-                           hover:bg-red-500 hover:text-white transition-all duration-300">
-            🔒 Logout
-        </a>
+        
     </nav>
 
     <!-- Footer -->
-    <div
-        class="mt-auto text-sm text-gray-600 dark:text-[#F9F7F2]/50 pt-6 border-t border-gray-300 dark:border-[#C9A24D]/20">
-        © 2025 ZAK Parfumerie
-    </div>
+     <div class="mt-auto">
+        <a routerLink="" class="mt-4 flex items-center gap-3 px-4 py-3 rounded-xl font-semibold
+                                   hover:bg-red-500 hover:text-white transition-all duration-300">
+            Logout
+        </a>
+        <div
+            class="text-sm text-gray-600 dark:text-[#F9F7F2]/50 pt-6 border-t border-gray-300 dark:border-[#C9A24D]/20">
+            © 2025 ZAK Parfumerie
+        </div>
+     </div>
 </aside>

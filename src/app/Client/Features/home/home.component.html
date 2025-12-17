@@ -8,7 +8,7 @@
             <!-- Logo -->
             <a class="flex items-center gap-3 group cursor-pointer">
                 <img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/60/external-parfume-japanese-wedding-vitaliy-gorbachev-fill-vitaly-gorbachev.png"
-                    class="w-10 h-10 rounded-lg ring-1 ring-[#C9A24D]/50 group-hover:ring-[#C9A24D] transition" />
+                    class="w-10 h-10 rounded-lg v group-hover:ring-[#C9A24D] transition" />
                 <div>
                     <span class="block font-extrabold tracking-widest text-[#A8842C] dark:text-[#C9A24D]">
                         ZAK
@@ -23,11 +23,12 @@
             <div class="flex items-center gap-5">
 
                 <!-- Search (Bigger + Gold focus) -->
-                <input type="search" [(ngModel)]="searchTerm" (input)="filterParfum()" 
+                <input type="search" [(ngModel)]="searchTerm" (input)="filterParfum()"
                     placeholder="Rechercher un parfum de luxe..." class="w-80 lg:w-96 px-6 py-3 rounded-full
                  bg-white dark:bg-[#0F0F0F]
                  text-gray-800 dark:text-[#F9F7F2]
                  border border-[#C9A24D]/40
+                 outline-none
                  focus:ring-2 focus:ring-[#C9A24D]
                  placeholder:text-gray-400 dark:placeholder:text-[#F9F7F2]/40
                  transition" />
@@ -51,15 +52,17 @@
 <section class="min-h-screen py-20 px-8
          bg-gradient-to-br
          from-[#F9F7F2] to-white
-         dark:from-[#0B0B0B] dark:via-[#111] dark:to-black" >
+         dark:from-[#0B0B0B] dark:via-[#111] dark:to-black">
 
     <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
 
-        @for (item of data(); track $index) {
+        @for (item of paginatedData(); track $index) {
+
         <div class="group relative rounded-2xl overflow-hidden
              bg-white dark:bg-[#111]
              border border-[#C9A24D]/30
-             shadow-lg hover:shadow-[#C9A24D]/20 transition">
+             shadow-lg hover:shadow-[#C9A24D]/20
+             min-h-[520px] transition">
 
             <!-- Gold glow -->
             <div class="absolute inset-0 bg-gradient-to-br
@@ -69,10 +72,11 @@
 
             <div class="relative p-6">
                 <!-- Image -->
-                <div class="rounded-xl overflow-hidden bg-black">
+                <div class="rounded-xl overflow-hidden dark:bg-[#111] bg-white aspect-[4/5]">
                     <img [src]="item.url"
-                        class="w-full h-56 object-cover group-hover:scale-110 transition duration-700">
+                        class="w-full h-full object-contain transition duration-700 group-hover:scale-105">
                 </div>
+
 
                 <!-- Content -->
                 <div class="text-center mt-6 space-y-2">
@@ -117,6 +121,36 @@
             </div>
         </div>
         }
+        <div class="flex justify-center items-center gap-3 mt-16">
+
+            <!-- Prev -->
+            <button (click)="goToPage(currentPage() - 1)" [disabled]="currentPage() === 1" class="w-10 h-10 rounded-full border border-[#C9A24D]/40
+                   disabled:opacity-40
+                   hover:bg-[#C9A24D]/20 transition">
+                ‹
+            </button>
+
+            <!-- Pages -->
+            <div class="flex justify-center items-center">
+                @for (p of [].constructor(totalPages()); track $index) {
+                <button (click)="goToPage($index + 1)"
+                    class="w-10 h-10 rounded-full border border-[#C9A24D]/40 transition"
+                    [class.bg-[#C9A24D]]="currentPage() === $index + 1"
+                    [class.text-black]="currentPage() === $index + 1" [class.font-bold]="currentPage() === $index + 1">
+                    {{ $index + 1 }}
+                </button>
+                }
+
+                <!-- Next -->
+                <button (click)="goToPage(currentPage() + 1)" [disabled]="currentPage() === totalPages()" class="w-10 h-10 rounded-full border border-[#C9A24D]/40
+                               disabled:opacity-40
+                               hover:bg-[#C9A24D]/20 transition">
+                    ›
+                </button>
+            </div>
+
+        </div>
+
 
     </div>
 </section>

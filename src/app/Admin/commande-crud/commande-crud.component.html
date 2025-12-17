@@ -11,10 +11,10 @@
              border-slate-200 dark:border-white/10">
 
             <h2 class="text-2xl font-bold text-slate-800 dark:text-white">
-                📦 Liste des Commandes
+                Liste des Commandes
             </h2>
 
-            <span class="text-sm text-slate-500 dark:text-gray-400">
+            <span class="text-sm text-slate-800 dark:text-gray-100">
                 Total : {{ data().length || 0 }}
             </span>
         </div>
@@ -69,24 +69,21 @@
 
                         <td class="px-6 py-4">
                             <div class="flex justify-center gap-2">
-
-                                <button class="px-3 py-2 text-sm font-semibold rounded-lg
-                         bg-green-500 hover:bg-green-600 text-white
-                         transition active:scale-95">
-                                    ✔ Confirmer
-                                </button>
-
-                                <button class="px-3 py-2 text-sm font-semibold rounded-lg
-                         bg-blue-500 hover:bg-blue-600 text-white
-                         transition active:scale-95">
-                                    ✏ Modifier
-                                </button>
-
-                                <button class="px-3 py-2 text-sm font-semibold rounded-lg
-                         bg-red-500 hover:bg-red-600 text-white
-                         transition active:scale-95">
-                                    🗑 Supprimer
-                                </button>
+                                @if (item.confirmer) {
+                                    <p class="text-green-800 bg-green-200 py-1 px-1 rounded-lg">Confirmer</p>
+                                }@else {
+                                    <button (click)="confirmer(item)" class="px-3 py-2 text-sm font-semibold rounded-lg
+                                                             bg-green-500 hover:bg-green-600 text-white
+                                                             transition active:scale-95">
+                                        Confirmer
+                                    </button>
+                                    
+                                    <button (click)="supprimer(item)" class="px-3 py-2 text-sm font-semibold rounded-lg
+                                                             bg-red-500 hover:bg-red-600 text-white
+                                                             transition active:scale-95">
+                                        Supprimer
+                                    </button>
+                                }
 
                             </div>
                         </td>

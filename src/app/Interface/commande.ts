@@ -6,5 +6,6 @@ export interface Commande {
     prix:number,
     nomPrenom:string,
     nomParfum:string,
-    marque:string
+    marque:string,
+    confirmer:boolean
 }
