@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from "@angular/router";
+import { ThemeService } from '../../Services/theme.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,5 +10,8 @@ import { RouterLink } from "@angular/router";
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+  constructor(protected theme:ThemeService){
+    
+  }
 
 }

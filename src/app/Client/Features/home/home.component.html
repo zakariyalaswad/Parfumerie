@@ -1,22 +1,123 @@
-<app-navbar></app-navbar>
-<section class="p-8 bg-linear-to-br from-gray-50 to-gray-100 min-h-screen">
-    <div class="grid grid-cols-3 gap-6">
-        @for (item of data(); track $index) {
-        <div
-            class="group flex flex-col items-center gap-4 p-6 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-1">
-            <div class="relative overflow-hidden rounded-lg bg-gray-200 w-48 h-48">
-                <img [src]="item.url" loading="lazy" alt="Parfum"
-                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+<header class="sticky top-0 z-50 backdrop-blur-xl
+         bg-white/70 dark:bg-[#0B0B0B]/85
+         border-b border-[#C9A24D]/30 shadow-sm">
+
+    <nav class="max-w-7xl mx-auto px-8 py-4">
+        <div class="flex items-center justify-between">
+
+            <!-- Logo -->
+            <a class="flex items-center gap-3 group cursor-pointer">
+                <img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/60/external-parfume-japanese-wedding-vitaliy-gorbachev-fill-vitaly-gorbachev.png"
+                    class="w-10 h-10 rounded-lg ring-1 ring-[#C9A24D]/50 group-hover:ring-[#C9A24D] transition" />
+                <div>
+                    <span class="block font-extrabold tracking-widest text-[#A8842C] dark:text-[#C9A24D]">
+                        ZAK
+                    </span>
+                    <span class="block text-xs uppercase tracking-[0.3em] text-gray-500 dark:text-[#F9F7F2]/70">
+                        Parfumerie
+                    </span>
+                </div>
+            </a>
+
+            <!-- Search & Actions -->
+            <div class="flex items-center gap-5">
+
+                <!-- Search (Bigger + Gold focus) -->
+                <input type="search" [(ngModel)]="searchTerm" (input)="filterParfum()" 
+                    placeholder="Rechercher un parfum de luxe..." class="w-80 lg:w-96 px-6 py-3 rounded-full
+                 bg-white dark:bg-[#0F0F0F]
+                 text-gray-800 dark:text-[#F9F7F2]
+                 border border-[#C9A24D]/40
+                 focus:ring-2 focus:ring-[#C9A24D]
+                 placeholder:text-gray-400 dark:placeholder:text-[#F9F7F2]/40
+                 transition" />
+
+                <!-- Theme toggle -->
+                <button (click)="theme.toggleTheme()" class="p-2.5 rounded-full border border-[#C9A24D]/40
+                 hover:bg-[#C9A24D]/10 transition">
+                    🌗
+                </button>
+
+                <!-- Profile -->
+                <button class="p-2.5 rounded-full border border-[#C9A24D]/40
+                 hover:bg-[#C9A24D]/10 transition">
+                    <img src="https://img.icons8.com/external-creatype-outline-colourcreatype/64/external-account-essential-ui-v4-creatype-outline-colourcreatype.png"
+                        class="w-6 h-6" />
+                </button>
             </div>
-            <p class="text-lg font-semibold text-gray-800">{{item.nom}}</p>
-            <p class="text-2xl font-bold bg-linear-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
-                {{item.prix}}</p>
-            <button (click)="addCommande()"
-                class="w-full bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg active:scale-95">
-                Commander
-            </button>
+        </div>
+    </nav>
+</header>
+<section class="min-h-screen py-20 px-8
+         bg-gradient-to-br
+         from-[#F9F7F2] to-white
+         dark:from-[#0B0B0B] dark:via-[#111] dark:to-black" >
+
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+
+        @for (item of data(); track $index) {
+        <div class="group relative rounded-2xl overflow-hidden
+             bg-white dark:bg-[#111]
+             border border-[#C9A24D]/30
+             shadow-lg hover:shadow-[#C9A24D]/20 transition">
+
+            <!-- Gold glow -->
+            <div class="absolute inset-0 bg-gradient-to-br
+               from-[#C9A24D]/15 to-transparent
+               opacity-0 group-hover:opacity-100 transition">
+            </div>
+
+            <div class="relative p-6">
+                <!-- Image -->
+                <div class="rounded-xl overflow-hidden bg-black">
+                    <img [src]="item.url"
+                        class="w-full h-56 object-cover group-hover:scale-110 transition duration-700">
+                </div>
+
+                <!-- Content -->
+                <div class="text-center mt-6 space-y-2">
+
+                    <!-- Marque -->
+                    <p class="uppercase tracking-widest text-xs text-gray-500 dark:text-gray-400">
+                        {{ item.marque }}
+                    </p>
+
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-[#F9F7F2]">
+                        {{ item.nom }}
+                    </h3>
+
+                    <!-- Prix -->
+                    <div class="flex justify-center items-end gap-3">
+
+                        <!-- Prix actuel -->
+                        <span class="text-2xl font-extrabold tracking-wide
+               text-[#A8842C] dark:text-[#C9A24D]">
+                            {{ item.prix }} DT
+                        </span>
+
+                        <!-- Ancien prix -->
+                        <span *ngIf="item.promoPrix"
+                            class="relative text-sm font-medium text-gray-500 dark:text-gray-400">
+
+                            <span class="absolute inset-0 top-1/2 border-t border-gray-400"></span>
+                            {{ item.promoPrix }} DT
+                        </span>
+
+                    </div>
+
+
+                    <button (click)="addCommande(item)" class="mt-4 w-full py-3 rounded-full
+                   bg-gradient-to-r from-[#C9A24D] to-[#A8842C]
+                   text-black font-semibold tracking-wide
+                   hover:brightness-110 active:scale-95 transition">
+                        Commander
+                    </button>
+
+                </div>
+            </div>
         </div>
         }
+
     </div>
 </section>
 

@@ -2,6 +2,7 @@ import { Component, effect, OnInit, signal } from '@angular/core';
 import { ParfumCrudService } from '../../Services/parfum-crud.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { ThemeService } from '../../Services/theme.service';
 @Component({
   selector: 'app-dashbord',
   standalone: true,
@@ -9,13 +10,14 @@ import { Router } from '@angular/router';
   templateUrl: './dashbord.component.html'
 })
 export class DashbordComponent implements OnInit {
+  
   data = this.parfum.parfums;
-
-  constructor(private parfum: ParfumCrudService, private route: Router) {
+  
+  constructor(private parfum: ParfumCrudService, private route: Router,protected theme:ThemeService) {
   }
-
+  
   ngOnInit(): void {
-
+    
   }
   Supprimer(id: string) {
     Swal.fire({
@@ -35,7 +37,7 @@ export class DashbordComponent implements OnInit {
   }
 
   modifier(id: string) {
-    this.route.navigate(['/Admin/AjoutParfum'],{
+    this.route.navigate(['/admin/ajoutParfum'],{
       state:{id}
     })
   }

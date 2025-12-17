@@ -14,7 +14,7 @@ export const routes: Routes = [
         loadComponent: () => import('./Auth/inscription/inscription.component').then(m => m.InscriptionComponent)
     },
     {
-        path: 'Admin',
+        path: 'admin',
         loadComponent: () =>
             import('./Admin/home-admin/home-admin.component')
                 .then(m => m.HomeAdminComponent),
@@ -26,7 +26,7 @@ export const routes: Routes = [
                         .then(m => m.DashbordComponent),
             },
             {
-                path: 'AjoutParfum',
+                path: 'ajoutParfum',
                 loadComponent: () =>
                     import('./Admin/parfum-crud/ajout-parfum/ajout-parfum.component')
                         .then(m => m.AjoutParfumComponent),

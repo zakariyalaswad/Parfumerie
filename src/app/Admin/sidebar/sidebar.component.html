@@ -1,30 +1,52 @@
-<aside class="fixed top-0 left-0 h-screen w-64 bg-gradient-to-b from-purple-700 to-pink-600 text-white
-         flex flex-col p-6 shadow-xl
-         -translate-x-full md:translate-x-0
-         transition-transform duration-300 ease-in-out">
-    <!-- Title -->
-    <h1 class="text-2xl font-extrabold mb-10 tracking-wide">
-        🌸 Parfum Admin
-    </h1>
+<aside class="fixed top-0 left-0 h-screen w-64
+              bg-gradient-to-b from-gray-100 dark:from-[#0B0B0B] via-gray-200 dark:via-[#111] to-gray-300 dark:to-[#1a1a1a]
+              text-gray-900 dark:text-[#F9F7F2]
+              flex flex-col p-6
+              shadow-2xl
+              -translate-x-full md:translate-x-0
+              transition-transform duration-500 ease-in-out">
+
+    <!-- Title + Toggle -->
+    <div class="flex items-center justify-between mb-10">
+        <h1 class="text-2xl font-extrabold tracking-wide
+                   text-[#C9A24D] drop-shadow-lg dark:text-[#C9A24D]">
+            Admin
+        </h1>
+        <button (click)="theme.toggleTheme()"
+            class="px-3 py-1 rounded-full border border-[#C9A24D] hover:bg-[#C9A24D]/20 transition">
+            {{ theme.isDark() ? '🌙' : '☀️' }}
+        </button>
+    </div>
 
     <!-- Links -->
-    <nav class="flex flex-col gap-4">
-        <a routerLink="/Admin" routerLinkActive="bg-white text-purple-700" class="px-4 py-3 rounded-lg font-semibold
-             hover:bg-white hover:text-purple-700
-             transition-all duration-200">
+    <nav class="flex flex-col gap-3">
+        <a routerLink="/admin" routerLinkActive="bg-[#C9A24D]/20 text-gray-900 dark:text-[#F9F7F2]" class="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold
+                  hover:bg-[#C9A24D]/30 hover:text-black dark:hover:text-[#0B0B0B]
+                  transition-all duration-300">
             📊 Dashboard
         </a>
 
-        <a routerLink="/Admin/commande" routerLinkActive="bg-white text-purple-700" class="px-4 py-3 rounded-lg font-semibold
-             hover:bg-white hover:text-purple-700
-             transition-all duration-200">
+        <a routerLink="/admin/commande" routerLinkActive="bg-[#C9A24D]/20 text-gray-900 dark:text-[#F9F7F2]" class="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold
+                  hover:bg-[#C9A24D]/30 hover:text-black dark:hover:text-[#0B0B0B]
+                  transition-all duration-300">
             🛒 Commande
         </a>
 
-        <a routerLink="/Admin/AjoutParfum" routerLinkActive="bg-white text-purple-700" class="px-4 py-3 rounded-lg font-semibold
-             hover:bg-white hover:text-purple-700
-             transition-all duration-200">
+        <a routerLink="/admin/ajoutParfum" routerLinkActive="bg-[#C9A24D]/20 text-gray-900 dark:text-[#F9F7F2]" class="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold
+                  hover:bg-[#C9A24D]/30 hover:text-black dark:hover:text-[#0B0B0B]
+                  transition-all duration-300">
             ➕ Add Parfum
         </a>
+
+        <a routerLink="" class="mt-4 flex items-center gap-3 px-4 py-3 rounded-xl font-semibold
+                           hover:bg-red-500 hover:text-white transition-all duration-300">
+            🔒 Logout
+        </a>
     </nav>
+
+    <!-- Footer -->
+    <div
+        class="mt-auto text-sm text-gray-600 dark:text-[#F9F7F2]/50 pt-6 border-t border-gray-300 dark:border-[#C9A24D]/20">
+        © 2025 ZAK Parfumerie
+    </div>
 </aside>

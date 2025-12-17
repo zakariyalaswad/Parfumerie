@@ -6,6 +6,5 @@ export interface Commande {
     prix:number,
     nomPrenom:string,
     nomParfum:string,
-    dateCmd:string,
     marque:string
 }

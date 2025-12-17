@@ -1,12 +1,20 @@
-<section class="p-8 bg-gradient-to-br from-slate-100 to-amber-100 min-h-screen">
-    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+<section class="p-8 min-h-screen
+         bg-gradient-to-br from-slate-100 to-amber-100
+         dark:from-[#0b0b0b] dark:to-[#1a1a1a]">
+
+    <div class="bg-white dark:bg-[#121212]
+           rounded-2xl shadow-xl overflow-hidden
+           border border-transparent dark:border-white/10">
 
         <!-- Header -->
-        <div class="flex items-center justify-between p-6 border-b">
-            <h2 class="text-2xl font-bold text-slate-800">
+        <div class="flex items-center justify-between p-6 border-b
+             border-slate-200 dark:border-white/10">
+
+            <h2 class="text-2xl font-bold text-slate-800 dark:text-white">
                 📦 Liste des Commandes
             </h2>
-            <span class="text-sm text-slate-500">
+
+            <span class="text-sm text-slate-500 dark:text-gray-400">
                 Total : {{ data().length || 0 }}
             </span>
         </div>
@@ -16,8 +24,10 @@
         <!-- Table -->
         <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse">
-                <thead class="bg-slate-100">
-                    <tr class="text-sm font-semibold text-slate-600 uppercase tracking-wider">
+
+                <thead class="bg-slate-100 dark:bg-[#1a1a1a]">
+                    <tr class="text-sm font-semibold uppercase tracking-wider
+                   text-slate-600 dark:text-gray-400">
                         <th class="px-6 py-4">#</th>
                         <th class="px-6 py-4">Client</th>
                         <th class="px-6 py-4">Parfum</th>
@@ -27,28 +37,39 @@
                     </tr>
                 </thead>
 
-                <tbody class="divide-y">
+                <tbody class="divide-y dark:divide-white/10">
                     @for (item of data(); track $index) {
-                    <tr class="hover:bg-amber-50 transition">
-                        <td class="px-6 py-4 font-medium text-slate-700">
+
+                    <tr class="transition
+                   hover:bg-amber-50 dark:hover:bg-white/5">
+
+                        <td class="px-6 py-4 font-medium text-slate-700 dark:text-gray-300">
                             {{ item.id }}
                         </td>
-                        <td class="px-6 py-4 text-slate-800">
+
+                        <td class="px-6 py-4 text-slate-800 dark:text-white">
                             {{ item.nomPrenom }}
                         </td>
-                        <td class="px-6 py-4 font-semibold text-slate-700">
+
+                        <td class="px-6 py-4 font-semibold text-slate-700 dark:text-gray-200">
                             {{ item.nomParfum }}
                         </td>
+
                         <td class="px-6 py-4">
-                            <span class="px-3 py-1 text-xs font-bold text-amber-600 bg-amber-100 rounded-full">
+                            <span class="px-3 py-1 text-xs font-bold rounded-full
+                       text-amber-600 bg-amber-100
+                       dark:text-amber-400 dark:bg-amber-400/10">
                                 {{ item.marque }}
                             </span>
                         </td>
-                        <td class="px-6 py-4 text-slate-500">
-                            {{ item.dateCmd }}
+
+                        <td class="px-6 py-4 text-slate-500 dark:text-gray-400">
+                            {{ item.createdAt.toDate() | date:'dd/MM/yyyy HH:mm' }}
                         </td>
+
                         <td class="px-6 py-4">
                             <div class="flex justify-center gap-2">
+
                                 <button class="px-3 py-2 text-sm font-semibold rounded-lg
                          bg-green-500 hover:bg-green-600 text-white
                          transition active:scale-95">
@@ -66,9 +87,11 @@
                          transition active:scale-95">
                                     🗑 Supprimer
                                 </button>
+
                             </div>
                         </td>
                     </tr>
+
                     }
                 </tbody>
             </table>
@@ -77,7 +100,7 @@
         } @else {
 
         <!-- Empty State -->
-        <div class="p-12 text-center text-slate-500">
+        <div class="p-12 text-center text-slate-500 dark:text-gray-400">
             <p class="text-lg font-semibold">
                 🚫 Aucune commande trouvée
             </p>
