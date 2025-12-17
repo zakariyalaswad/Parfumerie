@@ -66,8 +66,6 @@ export class HomeComponent implements OnInit {
   }
 
   //filter
-
-
   filterParfum() {
     this.currentPage.set(1);
 

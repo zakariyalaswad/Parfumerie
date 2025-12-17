@@ -1,21 +1,29 @@
-<form class="border w-1/2 flex flex-col ">
-    <h1>Connexion</h1>
-    <label for="email">Email:</label>
-    <input 
-    type="email" 
-    [(ngModel)]="email" 
-    name="email" 
-    id="email"
-    class="border rounded-lg">
-    <br>
-    <label for="password">Password</label>
-    <input 
-    type="password" 
-    [(ngModel)]="password" 
-    name="password" 
-    id="password"
-    class="border rounded-lg">
-    <br>
-    <button (click)="login(email,password)" class="border rounded-xl cursor-pointer">login</button>
+<form
+    class="w-full max-w-md mx-auto mt-16 p-8 bg-white dark:bg-[#111] rounded-2xl shadow-lg flex flex-col gap-6 border border-[#C9A24D]/30">
+
+    <h1 class="text-2xl font-bold text-center text-[#A8842C] dark:text-[#C9A24D]">
+        Connexion
+    </h1>
+
+    <!-- Email -->
+    <div class="flex flex-col gap-2">
+        <label for="email" class="text-gray-700 dark:text-gray-300 font-medium">Email:</label>
+        <input type="email" [(ngModel)]="email" name="email" id="email" placeholder="Entrez votre email"
+            class="px-4 py-3 rounded-xl border border-[#C9A24D]/40 focus:ring-2 focus:ring-[#C9A24D] outline-none bg-white dark:bg-[#0F0F0F] text-gray-800 dark:text-[#F9F7F2] placeholder-gray-400 dark:placeholder-gray-500 transition">
+    </div>
+
+    <!-- Password -->
+    <div class="flex flex-col gap-2">
+        <label for="password" class="text-gray-700 dark:text-gray-300 font-medium">Password:</label>
+        <input type="password" [(ngModel)]="password" name="password" id="password"
+            placeholder="Entrez votre mot de passe"
+            class="px-4 py-3 rounded-xl border border-[#C9A24D]/40 focus:ring-2 focus:ring-[#C9A24D] outline-none bg-white dark:bg-[#0F0F0F] text-gray-800 dark:text-[#F9F7F2] placeholder-gray-400 dark:placeholder-gray-500 transition">
+    </div>
+
+    <!-- Button -->
+    <button (click)="login(email,password)" type="button"
+        class="mt-4 py-3 bg-gradient-to-r from-[#C9A24D] to-[#A8842C] text-black font-semibold rounded-2xl hover:brightness-110 active:scale-95 transition">
+        Login
+    </button>
 
 </form>

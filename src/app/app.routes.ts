@@ -38,5 +38,8 @@ export const routes: Routes = [
                         .then(m => m.CommandeCrudComponent),
             }
         ],
+    },
+    {
+        path:'**', redirectTo:'', pathMatch:'full'
     }
 ];

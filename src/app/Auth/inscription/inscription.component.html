@@ -1,21 +1,64 @@
-<form class="flex flex-col w-1/2 border">
-    <h1>Registre</h1>
-    <label>Nom</label>
-    <input type="text" 
-    [(ngModel)]="data.nom" 
-    name="nom">
-    <label>Prenom</label>
-    <input type="text" [(ngModel)]="data.prenom" name="prenom">
-    <label>Adresse</label>
-    <input type="text" [(ngModel)]="data.adresse" name="adresse">
-    <label>Telephone</label>
-    <input type="tel" [(ngModel)]="data.tel" name="telephone">
-    <label>Email</label>
-    <input type="email" [(ngModel)]="data.email" name="email">
-    <label>Password</label>
-    <input type="text" [(ngModel)]="data.password" name="password">
-    <label>Confirm Password</label>
-    <input type="text" [(ngModel)]="data.passwordConfirm" name="password">
-    <br>
-    <button type="submit" (click)="register(data)" class="border cursor-pointer">Submit</button>
+<form
+    class="w-full max-w-md mx-auto mt-16 p-8 bg-white dark:bg-[#111] rounded-2xl shadow-lg flex flex-col gap-6 border border-[#C9A24D]/30">
+
+    <h1 class="text-2xl font-bold text-center text-[#A8842C] dark:text-[#C9A24D]">
+        Registre
+    </h1>
+
+    <!-- Nom -->
+    <div class="flex flex-col gap-2">
+        <label class="text-gray-700 dark:text-gray-300 font-medium">Nom</label>
+        <input type="text" [(ngModel)]="data.nom" name="nom" placeholder="Votre nom"
+            class="px-4 py-3 rounded-xl border border-[#C9A24D]/40 focus:ring-2 focus:ring-[#C9A24D] outline-none bg-white dark:bg-[#0F0F0F] text-gray-800 dark:text-[#F9F7F2] placeholder-gray-400 dark:placeholder-gray-500 transition">
+    </div>
+
+    <!-- Prenom -->
+    <div class="flex flex-col gap-2">
+        <label class="text-gray-700 dark:text-gray-300 font-medium">Prenom</label>
+        <input type="text" [(ngModel)]="data.prenom" name="prenom" placeholder="Votre prénom"
+            class="px-4 py-3 rounded-xl border border-[#C9A24D]/40 focus:ring-2 focus:ring-[#C9A24D] outline-none bg-white dark:bg-[#0F0F0F] text-gray-800 dark:text-[#F9F7F2] placeholder-gray-400 dark:placeholder-gray-500 transition">
+    </div>
+
+    <!-- Adresse -->
+    <div class="flex flex-col gap-2">
+        <label class="text-gray-700 dark:text-gray-300 font-medium">Adresse</label>
+        <input type="text" [(ngModel)]="data.adresse" name="adresse" placeholder="Votre adresse"
+            class="px-4 py-3 rounded-xl border border-[#C9A24D]/40 focus:ring-2 focus:ring-[#C9A24D] outline-none bg-white dark:bg-[#0F0F0F] text-gray-800 dark:text-[#F9F7F2] placeholder-gray-400 dark:placeholder-gray-500 transition">
+    </div>
+
+    <!-- Telephone -->
+    <div class="flex flex-col gap-2">
+        <label class="text-gray-700 dark:text-gray-300 font-medium">Telephone</label>
+        <input type="tel" [(ngModel)]="data.tel" name="telephone" placeholder="+216 ..."
+            class="px-4 py-3 rounded-xl border border-[#C9A24D]/40 focus:ring-2 focus:ring-[#C9A24D] outline-none bg-white dark:bg-[#0F0F0F] text-gray-800 dark:text-[#F9F7F2] placeholder-gray-400 dark:placeholder-gray-500 transition">
+    </div>
+
+    <!-- Email -->
+    <div class="flex flex-col gap-2">
+        <label class="text-gray-700 dark:text-gray-300 font-medium">Email</label>
+        <input type="email" [(ngModel)]="data.email" name="email" placeholder="Votre email"
+            class="px-4 py-3 rounded-xl border border-[#C9A24D]/40 focus:ring-2 focus:ring-[#C9A24D] outline-none bg-white dark:bg-[#0F0F0F] text-gray-800 dark:text-[#F9F7F2] placeholder-gray-400 dark:placeholder-gray-500 transition">
+    </div>
+
+    <!-- Password -->
+    <div class="flex flex-col gap-2">
+        <label class="text-gray-700 dark:text-gray-300 font-medium">Password</label>
+        <input type="password" [(ngModel)]="data.password" name="password" placeholder="Votre mot de passe"
+            class="px-4 py-3 rounded-xl border border-[#C9A24D]/40 focus:ring-2 focus:ring-[#C9A24D] outline-none bg-white dark:bg-[#0F0F0F] text-gray-800 dark:text-[#F9F7F2] placeholder-gray-400 dark:placeholder-gray-500 transition">
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="flex flex-col gap-2">
+        <label class="text-gray-700 dark:text-gray-300 font-medium">Confirm Password</label>
+        <input type="password" [(ngModel)]="data.passwordConfirm" name="passwordConfirm"
+            placeholder="Confirmez votre mot de passe"
+            class="px-4 py-3 rounded-xl border border-[#C9A24D]/40 focus:ring-2 focus:ring-[#C9A24D] outline-none bg-white dark:bg-[#0F0F0F] text-gray-800 dark:text-[#F9F7F2] placeholder-gray-400 dark:placeholder-gray-500 transition">
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" (click)="register(data)"
+        class="mt-4 py-3 bg-gradient-to-r from-[#C9A24D] to-[#A8842C] text-black font-semibold rounded-2xl hover:brightness-110 active:scale-95 transition">
+        Submit
+    </button>
+
 </form>

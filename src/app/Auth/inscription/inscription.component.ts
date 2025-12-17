@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { User } from '../../Interface/user';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-inscription',
   standalone: true,
@@ -14,7 +15,8 @@ export class InscriptionComponent {
 
   userRef = collection(db, "User");
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private router: Router
+  ) {
   }
   data: User = {
     id: "",
@@ -37,15 +39,16 @@ export class InscriptionComponent {
       await addDoc(this.userRef, {
         ...data,
         createdAt: serverTimestamp()
-      });               
+      });
       console.log("user ajouter avec succes!!");
+      this.router.navigate(['']);
       this.reset();
-    } catch (error) { 
+    } catch (error) {
       console.log(error);
     }
   }
-  reset(){
-    this.data= {
+  reset() {
+    this.data = {
       id: "",
       nom: "",
       prenom: "",
