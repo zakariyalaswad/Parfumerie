@@ -3,6 +3,7 @@ import { ParfumCrudService } from '../../../Services/parfum-crud.service';
 import { Parfum } from '../../../Interface/parfum';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ajout-parfum',
@@ -55,6 +56,7 @@ export class AjoutParfumComponent implements OnInit {
       console.log("ajouter avec succe");
       this.reset();
       this.router.navigate(['/admin']);
+      Swal.fire('Ajouter!', 'Le parfum a été ajouté', 'success');
     }
     catch (error) {
       console.log(error);
@@ -68,6 +70,7 @@ export class AjoutParfumComponent implements OnInit {
       this.reset();
       this.idDoc=null;
       this.router.navigate(['/admin']);
+      Swal.fire('Modifier!', 'Le parfum a été modifier.', 'success');
     }catch(error){
       console.log(error)
     }
