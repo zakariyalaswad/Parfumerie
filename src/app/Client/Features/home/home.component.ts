@@ -7,11 +7,12 @@ import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from "@angular/common";
 import { ThemeService } from '../../../Services/theme.service';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FooterComponent, FormsModule, NgIf],
+  imports: [FooterComponent, FormsModule, NgIf, RouterLink],
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {

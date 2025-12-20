@@ -34,16 +34,15 @@
                  transition" />
 
                 <!-- Theme toggle -->
-                <button (click)="theme.toggleTheme()" class="p-2.5 rounded-full border border-[#C9A24D]/40
-                 hover:bg-[#C9A24D]/10 transition">
-                    🌗
+                <button (click)="theme.toggleTheme()"
+                    class="px-2 py-1 w-10 h-10 rounded-full border border-[#C9A24D]/40 hover:bg-[#C9A24D]/20 transition">
+                    {{ theme.isDark() ? '☀️' : '🌙' }}
                 </button>
 
                 <!-- Profile -->
-                <button class="p-2.5 rounded-full border border-[#C9A24D]/40
-                 hover:bg-[#C9A24D]/10 transition">
-                    <img src="https://img.icons8.com/external-creatype-outline-colourcreatype/64/external-account-essential-ui-v4-creatype-outline-colourcreatype.png"
-                        class="w-6 h-6" />
+                <button class="p-2.5 rounded-2xl border border-[#C9A24D]/40
+                 hover:bg-[#C9A24D]/10 dark:text-slate-300 transition">
+                 <a routerLink="/admin">essai en tant que admin</a>
                 </button>
             </div>
         </div>
